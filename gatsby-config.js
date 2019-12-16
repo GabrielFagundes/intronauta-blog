@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Intronauta - Travel to the inner`,
+    position: 'Front-End Developer',
     description: `A blog about inner knowledge`,
     author: `@gabrielfagundes`,
   },
