@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Intronauta - Travel to the inner`,
+    title: `Intronauta`,
     position: 'Front-End Developer',
     description: `A blog about inner knowledge`,
     author: `@gabrielfagundes`,
@@ -13,6 +13,19 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
       },
     },
     `gatsby-transformer-sharp`,
