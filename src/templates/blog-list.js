@@ -4,9 +4,15 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import PostItem from "../components/PostItem"
+import Pagination from '../components/Pagination'
 
 const BlogList = props => {
   const postList = props.data.allMarkdownRemark.edges
+  const { currentPage, numPages } = props.pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? '/' : `/page/${currentPage - 1}`
+  const nextPage = `/page/${currentPage + 1}`
 
   return (
     <Layout>
@@ -20,6 +26,7 @@ const BlogList = props => {
           },
         }) => (
             <PostItem
+              key={slug}
               slug={slug}
               background={background}
               category={category}
@@ -30,6 +37,14 @@ const BlogList = props => {
             />
           )
       )}
+      <Pagination
+        isFirst={isFirst}
+        isLast={isLast}
+        currentPage={currentPage}
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </Layout>
   )
 }
@@ -49,7 +64,7 @@ export const query = graphql`
           frontmatter {
             background
             category
-            date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+            date(formatString: "MMMM DD [,] YYYY")
             description
             title
           }
