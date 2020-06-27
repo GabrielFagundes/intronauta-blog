@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const SearchWrapper = styled.section`
-  background: var(--background)c;
+  background: var(--background);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -22,6 +22,23 @@ export const SearchWrapper = styled.section`
   .ais-Stats {
     color: var(--texts);
   }
+
+  body#grid & {
+    .ais-Hits-list {
+    background-color: var(--borders);
+      border-bottom: 1px solid var(--borders);
+      border-top: 1px solid var(--borders);
+      display: grid;
+      grid-area: card;
+      grid-gap: 1px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      margin-top: 2rem;
+    }
+    .ais-Hits-item {
+      background-color: var(--background);
+    }
+  }
+
   .ais-SearchBox-input {
     background: none;
     border: none;
